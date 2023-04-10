@@ -1,6 +1,6 @@
 
 public class ToDoList {
-	Task toDo[];
+	private Task toDo[];
 
 	public ToDoList(int maxTasks) {
 		if (maxTasks <= 0)
@@ -59,12 +59,11 @@ public class ToDoList {
 	}
 	
 	public boolean rimuoviTask(Task task) {
-		if (task != null) {
-			for (int i = 0; i < toDo.length; i++)
-				if (toDo[i] != null && task.equals(toDo[i])) {
-					toDo[i] = null;
-					return true;
-				}
+		int pos = getPosizioneTask(task);
+		
+		if (pos != -1) {
+			toDo[pos] = null;
+			return true;
 		}
 		
 		return false;
